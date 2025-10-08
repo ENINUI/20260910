@@ -1,0 +1,218 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: radial-gradient(#0b0b0b, #000);
+  color: #fff;
+  font-family: "Segoe UI", sans-serif;
+}
+canvas {
+  display: block;
+  margin: 0 auto;
+  background: linear-gradient(to top, #1a1a1a, #2a2a2a);
+  border: 2px solid #444;
+  box-shadow: 0 0 20px #111 inset;
+}
+
+/* HUD chips */
+#ui-top {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column; /* 위아래 두 줄 */
+  gap: 6px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+/* 첫째 줄: 지역 + 코인 */
+#ui-row-top {
+  display: flex;
+  gap: 16px;
+}
+
+/* 둘째 줄: 직업 + 스탯 */
+#ui-row-bottom {
+  display: flex;
+  gap: 16px;
+}
+
+.chip {
+  background: rgba(20, 20, 20, 0.8);
+  padding: 6px 12px;
+  border: 1px solid #666;
+  border-radius: 8px;
+  text-shadow: 0 0 4px #000;
+  box-shadow: 0 0 8px rgba(255,255,255,0.1);
+}
+
+
+/* Hearts */
+#hearts {
+  position: absolute;
+  top: 100px;
+  left: 10px;
+  display: flex;
+}
+.heart {
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+  background: red;
+  clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 80%, 20% 100%, 0% 35%);
+  filter: drop-shadow(0 0 4px crimson);
+}
+.heart.empty {
+  background: #333;
+  filter: none;
+}
+
+/* Skill HUD */
+#skill-hud {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+}
+.skill-slot {
+  width: 70px;
+  height: 70px;
+  background: rgba(40, 40, 40, 0.9);
+  border: 2px solid #555;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: #ccc;
+  box-shadow: 0 0 8px #111 inset;
+  transition: all 0.2s ease;
+}
+.skill-slot:hover {
+  transform: scale(1.1);
+  border-color: #ffb347;
+  color: #fff;
+  box-shadow: 0 0 8px #ffb347;
+}
+
+/* Panels */
+.panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(15, 15, 15, 0.95);
+  border: 2px solid #666;
+  border-radius: 10px;
+  padding: 20px;
+  min-width: 420px;
+  color: #fff;
+  box-shadow: 0 0 20px #000;
+}
+.panel.hidden { display: none; }
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.xbtn {
+  background: #900;
+  border: none;
+  color: #fff;
+  padding: 5px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.xbtn:hover { background: #c00; }
+
+/* Shop */
+.shop-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #222;
+  border: 1px solid #444;
+  padding: 8px;
+  margin: 4px 0;
+  border-radius: 8px;
+}
+.shop-item button {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.shop-item button:hover {
+  background: #666;
+}
+
+/* Inventory */
+#inv-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.tab {
+  background: #333;
+  color: #aaa;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin: 0 4px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+.tab.active {
+  background: #777;
+  color: #fff;
+  box-shadow: 0 0 6px #999 inset;
+}
+.tab-content.hidden { display: none; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.cell {
+  height: 60px;
+  background: #1d1d1d;
+  border: 1px solid #555;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #aaa;
+  transition: 0.2s;
+}
+.cell:hover {
+  border-color: #ffb347;
+  color: #fff;
+}
+#job-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.job-item {
+  background: #222;
+  padding: 6px 10px;
+  border: 1px solid #555;
+  border-radius: 4px;
+}
+
+/* Settings */
+#settings label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}

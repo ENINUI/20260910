@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ENIN</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="gameCanvas" width="1280" height="720"></canvas>
+
+  <!-- HUD -->
+  <div id="ui-top">
+    <div id="ui-row-top">
+      <div id="region-chip" class="chip">지역: -</div>
+      <div id="coin-chip" class="chip">코인: 0</div>
+    </div>
+    <div id="ui-row-bottom">
+      <div id="job-chip" class="chip">직업: 없음</div>
+      <div id="stat-chip" class="chip">DMG: 0 | CRIT: 0%</div>
+    </div>
+  </div>
+
+
+  <!-- 스킬 HUD -->
+  <div id="skill-hud">
+    <div class="skill-slot" data-key="shift">Shift</div>
+    <div class="skill-slot" data-key="e">E</div>
+    <div class="skill-slot" data-key="q">Q</div>
+    <div class="skill-slot" data-key="ctrl">Ctrl</div>
+    <div class="skill-slot" data-key="r">R</div>
+  </div>
+  
+  <!-- 하트 체력 표시 -->
+<div id="hearts"></div>
+
+
+  <!-- 상점 -->
+  <div id="shop" class="panel hidden">
+    <div class="panel-header">
+      상점 <button class="xbtn" data-close="shop">✕</button>
+    </div>
+    <div id="shop-coin"></div>
+    <div id="shop-list"></div>
+  </div>
+
+  <!-- 인벤토리 -->
+  <div id="inventory" class="panel hidden">
+    <div class="panel-header">
+      인벤토리 <button class="xbtn" data-close="inventory">✕</button>
+    </div>
+    <div id="inv-tabs">
+      <button data-tab="weapon" class="tab active">무기</button>
+      <button data-tab="skill" class="tab">스킬</button>
+      <button data-tab="job" class="tab">직업</button>
+    </div>
+    <div id="inv-content">
+      <div id="tab-weapon" class="tab-content">
+        <div class="grid" id="weapon-grid"></div>
+      </div>
+      <div id="tab-skill" class="tab-content hidden">
+        <div class="grid" id="skill-grid"></div>
+      </div>
+      <div id="tab-job" class="tab-content hidden">
+        <div id="job-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 설정 -->
+  <div id="settings" class="panel hidden">
+    <div class="panel-header">
+      설정 <button class="xbtn" data-close="settings">✕</button>
+    </div>
+    <label>음량:
+      <input type="range" id="vol" min="0" max="100" value="100" />
+      <span id="vol-val">100%</span>
+    </label>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
