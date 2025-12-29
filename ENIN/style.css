@@ -216,3 +216,257 @@ canvas {
   gap: 10px;
   font-size: 16px;
 }
+
+#control-panel {
+  position: absolute;
+  top: 80px; right: 30px;
+  width: 260px;
+  background: rgba(30,30,30,0.95);
+  border: 2px solid #888;
+  border-radius: 12px;
+  padding: 15px;
+  color: #fff;
+  z-index: 999;
+  font-family: 'consolas';
+}
+#control-panel.hidden { display: none; }
+.ctrl-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+#control-panel button {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#control-panel button:hover { background: #666; }
+.ctrl-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#settings button#fullscreenBtn {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 12px;
+  cursor: pointer;
+  width: 100%;
+}
+#settings button#fullscreenBtn:hover {
+  background: #666;
+}
+
+#weapon-section {
+  text-align: center;
+}
+
+#weapon-equip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.equip-slot {
+  width: 120px;
+  height: 120px;
+  background: rgba(40,40,40,0.9);
+  border: 2px solid #555;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: #ccc;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.equip-slot:hover {
+  border-color: #ffb347;
+  transform: scale(1.05);
+}
+
+.weapon-cell {
+  height: 70px;
+  background: #222;
+  border: 1px solid #555;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #aaa;
+  cursor: grab;
+  transition: 0.2s;
+}
+.weapon-cell:hover {
+  border-color: #ffb347;
+  color: #fff;
+}
+.weapon-cell:active {
+  cursor: grabbing;
+}
+
+
+.weapon-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.weapon-cell {
+  height: 70px;
+  background: #222;
+  border: 1px solid #555;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #aaa;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.weapon-cell:hover {
+  border-color: #ffb347;
+  color: #fff;
+}
+
+.equip-choice button {
+  background: #444;
+  border: none;
+  color: #fff;
+  margin: 4px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.equip-choice button:hover {
+  background: #666;
+}
+
+
+#job-slot-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.job-slot {
+  width: 140px;
+  height: 100px;
+  background: rgba(30,30,30,0.9);
+  border: 2px solid #555;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ccc;
+  font-weight: bold;
+  font-size: 18px;
+  box-shadow: 0 0 8px #111 inset;
+}
+
+.job-slot.filled {
+  background: rgba(80,80,80,0.9);
+  border-color: #ffb347;
+  color: #fff;
+}
+
+.job-slot span {
+  font-size: 14px;
+  color: #aaa;
+}
+
+#dropJobConfirm button {
+  background: #444;
+  border: none;
+  color: #fff;
+  margin: 4px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+#dropJobConfirm button:hover {
+  background: #666;
+}
+
+#skill-equip-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 10px 0 20px 0;
+}
+
+.skill-equip-slot {
+  width: 90px;
+  height: 90px;
+  background: rgba(40,40,40,0.9);
+  border: 2px solid #666;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #ccc;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.skill-equip-slot:hover {
+  border-color: #ffb347;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+#skill-list-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 10px;
+}
+
+.skill-cell {
+  background: rgba(25,25,25,0.9);
+  border: 1px solid #555;
+  border-radius: 8px;
+  color: #aaa;
+  font-size: 14px;
+  padding: 10px;
+  text-align: center;
+  cursor: grab;
+  transition: 0.2s;
+}
+.skill-cell:hover {
+  border-color: #ffb347;
+  color: #fff;
+}
+
+#skill-info {
+  margin-top: 15px;
+  background: rgba(30,30,30,0.9);
+  border: 1px solid #666;
+  border-radius: 8px;
+  padding: 12px;
+  color: #ccc;
+  text-align: center;
+}
+#skill-info h3 {
+  color: #ffb347;
+  margin-bottom: 6px;
+}
+#skill-info.hidden { display: none; }
+

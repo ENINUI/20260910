@@ -7,77 +7,150 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <canvas id="gameCanvas" width="1280" height="720"></canvas>
+  <canvas id="gameCanvas" width="1980" height="1080"></canvas>
 
-  <!-- HUD -->
+  <!-- 상단 UI -->
   <div id="ui-top">
     <div id="ui-row-top">
-      <div id="region-chip" class="chip">지역: -</div>
+      <div id="region-chip" class="chip">지역: ???</div>
       <div id="coin-chip" class="chip">코인: 0</div>
     </div>
     <div id="ui-row-bottom">
-      <div id="job-chip" class="chip">직업: 없음</div>
-      <div id="stat-chip" class="chip">DMG: 0 | CRIT: 0%</div>
+      <div id="stat-chip" class="chip">DMG 5 | CRIT 5% | x2</div>
     </div>
   </div>
 
+  <!-- 하트 -->
+  <div id="hearts"></div>
 
   <!-- 스킬 HUD -->
   <div id="skill-hud">
-    <div class="skill-slot" data-key="shift">Shift</div>
+    <div class="skill-slot" data-key="shift">SHIFT</div>
     <div class="skill-slot" data-key="e">E</div>
     <div class="skill-slot" data-key="q">Q</div>
-    <div class="skill-slot" data-key="ctrl">Ctrl</div>
     <div class="skill-slot" data-key="r">R</div>
   </div>
-  
-  <!-- 하트 체력 표시 -->
-<div id="hearts"></div>
 
-
-  <!-- 상점 -->
+  <!-- 상점 패널 -->
   <div id="shop" class="panel hidden">
     <div class="panel-header">
-      상점 <button class="xbtn" data-close="shop">✕</button>
+      <span>상점</span>
+      <button class="xbtn" data-close="shop">X</button>
     </div>
-    <div id="shop-coin"></div>
     <div id="shop-list"></div>
+    <div id="shop-coin"></div>
   </div>
 
   <!-- 인벤토리 -->
   <div id="inventory" class="panel hidden">
-    <div class="panel-header">
-      인벤토리 <button class="xbtn" data-close="inventory">✕</button>
-    </div>
-    <div id="inv-tabs">
-      <button data-tab="weapon" class="tab active">무기</button>
-      <button data-tab="skill" class="tab">스킬</button>
-      <button data-tab="job" class="tab">직업</button>
-    </div>
-    <div id="inv-content">
-      <div id="tab-weapon" class="tab-content">
-        <div class="grid" id="weapon-grid"></div>
-      </div>
-      <div id="tab-skill" class="tab-content hidden">
-        <div class="grid" id="skill-grid"></div>
-      </div>
-      <div id="tab-job" class="tab-content hidden">
-        <div id="job-list"></div>
-      </div>
-    </div>
+  <div class="panel-header">
+    <span>인벤토리</span>
+    <button class="xbtn" data-close="inventory">X</button>
   </div>
 
-  <!-- 설정 -->
+  <div id="weapon-section">
+    <h3>무기 장착</h3>
+    <div id="weapon-equip">
+      <div class="equip-slot" id="main-weapon">주무기</div>
+      <div class="equip-slot" id="sub-weapon">보조무기</div>
+    </div>
+    <h3>보유 무기</h3>
+    <div id="weapon-grid" class="grid weapon-grid"></div>
+  </div>
+</div>
+
+
+  <!-- 🧩 탭별 내용 -->
+  <div id="weapon-grid" class="tab-content grid"></div>
+  <div id="skill-grid" class="tab-content grid hidden"></div>
+  <div id="job-list" class="tab-content hidden"></div>
+</div>
+
+
+
+  <!-- 설정창 -->
   <div id="settings" class="panel hidden">
     <div class="panel-header">
-      설정 <button class="xbtn" data-close="settings">✕</button>
+      <span>⚙ 설정</span>
+      <button class="xbtn" data-close="settings">X</button>
     </div>
+
     <label>음량:
-      <input type="range" id="vol" min="0" max="100" value="100" />
+      <input id="vol" type="range" min="0" max="100" value="100">
       <span id="vol-val">100%</span>
     </label>
+
+    <button id="fullscreenBtn">전체 화면 전환</button>
   </div>
 
-  <script src="game.js"></script>
+  <!-- 🎛 몬스터 제어 패널 -->
+<div id="control-panel" class="hidden">
+  <div class="ctrl-header">
+    <strong>🧩 몬스터 제어</strong>
+    <button id="ctrl-close">X</button>
+	<hr>
+<div id="job-debug">
+  <strong>🧭 직업 획득</strong>
+  <div id="job-buttons"></div>
+</div>
+
+  </div>
+
+  <div class="ctrl-buttons">
+    <!-- ✅ 체크박스 형태 -->
+    <label style="display:flex;align-items:center;gap:8px;">
+      <input id="toggle-spawn-chk" type="checkbox">
+      몬스터 스폰 활성화
+    </label>
+
+    <button id="spawn-slime">슬라임 소환</button>
+    <button id="spawn-boss">보스 소환</button>
+    <button id="clear-monsters">몬스터 전체 제거</button>
+  </div>
+</div>
+
+<!-- ⚡ 스킬 인벤토리 패널 -->
+<div id="skill-panel" class="panel hidden">
+  <div class="panel-header">
+    <span>스킬 인벤토리</span>
+    <button class="xbtn" data-close="skill-panel">X</button>
+  </div>
+
+  <!-- 장착 슬롯 -->
+  <div id="skill-equip-row">
+    <div class="skill-equip-slot" data-slot="shift">Shift</div>
+    <div class="skill-equip-slot" data-slot="e">E</div>
+    <div class="skill-equip-slot" data-slot="q">Q</div>
+    <div class="skill-equip-slot" data-slot="r">R</div>
+  </div>
+
+  <!-- 스킬 목록 -->
+  <div id="skill-list-container"></div>
+
+  <!-- 스킬 정보 -->
+  <div id="skill-info" class="hidden">
+    <h3 id="skill-info-name"></h3>
+    <p id="skill-info-job"></p>
+    <p id="skill-info-desc"></p>
+    <button id="skill-info-close">닫기</button>
+  </div>
+</div>
+
+
+<!-- 🎯 직업 패널 -->
+<div id="job-panel" class="panel hidden">
+  <div class="panel-header">
+    <span>직업</span>
+    <button class="xbtn" data-close="job-panel">X</button>
+  </div>
+  <div id="job-slot-container">
+    <!-- 3개의 슬롯이 여기에 렌더링됨 -->
+  </div>
+</div>
+
+
+
+  <script type="module" src="./js/main.js"></script>
 </body>
+
 </html>
