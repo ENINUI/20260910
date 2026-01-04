@@ -277,8 +277,11 @@ export function initMonsterControls() {
     if (uiRefs.ctrlClose) uiRefs.ctrlClose.onclick = () => uiRefs.ctrlPanel.classList.add('hidden');
 }
 
-// 초기화 실행
-initSkillDragDrop();
-initMonsterControls();
-updateMetaUI();
-renderJobButtons(); // 디버그 버튼 생성
+// (수정) 함수로 감싸서, main.js가 부를 때까지 기다림
+export function initUI() {
+    initSkillDragDrop();
+    initMonsterControls();
+    renderJobButtons();
+    updateMetaUI();
+    console.log("✅ UI Initialized");
+}
