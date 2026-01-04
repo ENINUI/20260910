@@ -1,12 +1,11 @@
 import { togglePanel, uiRefs } from './ui/uiControl.js';
 import { useEquippedSkill, useBasic, useSecondary } from './job/jobSystem.js';
-import { gameState } from './state.js';
+import { gameState, isPaused } from './state.js'; // ★ 변경: isPaused를 state.js에서 가져옴
 import { camera } from './rendering/draw.js';
 
 export const keys = {};
 export const mouse = { x: 0, y: 0 };
-export let isPaused = false;
-export const setPaused = (v) => { isPaused = v; };
+// 기존에 있던 export let isPaused... 코드는 삭제되었습니다.
 
 let viewScale = 1; 
 export const getViewScale = () => viewScale;
@@ -20,7 +19,10 @@ window.addEventListener('keydown', (e) => {
     if (k === 'm') viewScale = viewScale === 1 ? 1.25 : 1;
     if (k === 'tab') { e.preventDefault(); gameState.showStats = !gameState.showStats; }
     
-    if (isPaused) return;
+    // F8 키 디버그용 (추가 권장)
+    if (e.key === "F8") document.getElementById('control-panel').classList.toggle("hidden");
+
+    if (isPaused) return; // 가져온 isPaused 사용
 
     if (k === 'shift') useEquippedSkill('shift');
     if (k === 'e') useEquippedSkill('e');
