@@ -1,14 +1,16 @@
 import { gameState } from './state.js';
 import { chooseRegion } from './map/map.js';
 import { gameLoop } from './gameLoop.js';
-// 필요한 초기화 모듈 import
 import './input.js'; 
-import './ui/uiControl.js';
+import { initUI } from './ui/uiControl.js'; // ★ initUI 가져오기
 
-// 초기 설정
+// 1. 초기 지역 설정
 gameState.currentRegion = chooseRegion();
 
-// 루프 시작
+// 2. UI 및 이벤트 리스너 초기화 (이제 여기서 안전하게 실행됨)
+initUI();
+
+// 3. 게임 루프 시작
 requestAnimationFrame(gameLoop);
 
-console.log("Game Modules Loaded.");
+console.log("🚀 Game Started: Modules Loaded.");
