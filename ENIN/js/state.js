@@ -20,6 +20,10 @@ export const gameState = {
     boss: null
 };
 
+// 일시정지 상태 관리
+export let isPaused = false;
+export const setPaused = (v) => { isPaused = v; };
+
 // === 유틸리티 함수 ===
 export const nowSec = () => performance.now() / 1000;
 

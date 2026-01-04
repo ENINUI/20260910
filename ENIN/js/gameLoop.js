@@ -1,6 +1,6 @@
-import { gameState, ctx, canvas, mapWidth, mapHeight, groundLevel } from './state.js';
+import { gameState, ctx, canvas, mapWidth, mapHeight, groundLevel, isPaused } from './state.js'; // ★ 변경: isPaused 추가
 import { player } from './player/player.js';
-import { isPaused, keys, getViewScale } from './input.js';
+import { keys, getViewScale } from './input.js'; // ★ 변경: isPaused 제거
 import { updateCamera, drawRegionInfo, camera } from './rendering/draw.js';
 import { spawnEntity } from './enemy/monster.js';
 import { updateProjectiles } from './combat.js';
@@ -30,7 +30,7 @@ export function gameLoop(now = 0) {
         // 몬스터 스폰 (임시)
         gameState.monsterSpawnTimer += dt;
         if (gameState.monsterSpawnTimer > 5) {
-             spawnEntity('monster', camera.x + 800, groundLevel);
+             // spawnEntity('slime', camera.x + 800, groundLevel); // 필요 시 주석 해제
              gameState.monsterSpawnTimer = 0;
         }
 
