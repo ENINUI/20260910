@@ -1,5 +1,5 @@
-import { ctx, gameState, nowSec, hitPointRect, player as playerState } from './state.js';
-import { player } from './player/player.js'; // 순환 참조 주의 (필요시 인자로 받음)
+import { ctx, gameState, nowSec, hitPointRect } from './state.js';
+import { player } from './player/player.js';
 
 // === 투사체 클래스 ===
 export class Attack {
@@ -38,6 +38,7 @@ export class SwordArc {
 }
 
 // === 전투 함수 ===
+// player 객체는 함수가 실행될 때 참조되므로 순환 참조 문제 없이 작동합니다.
 export const rollCrit = (base) => Math.random() < player.critChance ? Math.floor(base * player.critMult) : base;
 
 export const shoot = (ctxObj, opts) => gameState.projectiles.push(new Attack(ctxObj.px, ctxObj.py, ctxObj.dx, ctxObj.dy, opts));
